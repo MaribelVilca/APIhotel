@@ -146,8 +146,7 @@ table tr:hover {
                         <th><i class="fas fa-map-marker-alt"></i> Dirección</th>
                         <th><i class="fas fa-phone"></i> Teléfono</th>
                         <th><i class="fas fa-envelope"></i> Email</th>
-                        <th><i class="fas fa-dollar-sign"></i> Precio Promedio</th>
-                    </tr>
+                     </tr>
                 </thead>
                 <tbody>
                     <?php foreach (array_reverse($hotelesRecientes) as $hotel): ?>
@@ -156,8 +155,7 @@ table tr:hover {
                             <td><?php echo htmlspecialchars($hotel['direccion']); ?></td>
                             <td><?php echo htmlspecialchars($hotel['telefono']); ?></td>
                             <td><?php echo htmlspecialchars($hotel['email']); ?></td>
-                            <td><?php echo htmlspecialchars($hotel['precio_promedio']); ?></td>
-                        </tr>
+                         </tr>
                     <?php endforeach; ?>
                 </tbody>
             </table>

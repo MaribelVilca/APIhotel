@@ -120,7 +120,32 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 
+CREATE TABLE Client_API (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    ruc VARCHAR(20) NOT NULL,
+    razon_social VARCHAR(150) NOT NULL,
+    telefono VARCHAR(20),
+    correo VARCHAR(100),
+    fecha_registro DATE,
+    estado TINYINT(1) DEFAULT 1
+);
 
+-- Tabla de tokens
+CREATE TABLE Tokens_api (
+    id INT(11) PRIMARY KEY,
+    id_client_api INT(11), 
+    token varchar(100), 
+    fecha_registro DATE,
+    estado int(1) DEFAULT 
+);
+
+-- Tabla de conteo de requests
+CREATE TABLE Count_request (
+    id INT (11) PRIMARY KEY,
+    id_token_api INT(11),  
+    tipo VARCHAR(30),
+    fecha date
+);
 /APIHOTEL
 │── /config
 │    └── database.php            # conexión a la base de datos

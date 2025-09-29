@@ -9,40 +9,39 @@ if (!isset($_SESSION['user_id'])) {
     exit();
 }
 
-require_once __DIR__ . '/../controllers/HotelController.php';
-$hotelController = new HotelController();
+require_once __DIR__ . '/../controllers/ApiClientController.php';
+$hotelController = new ApiClientController();
 
 // Determinar si es edición o creación
 $isEditing = isset($_GET['edit']) && is_numeric($_GET['edit']);
 $hotel = null;
-$pageTitle = $isEditing ? 'Editar Hotel' : 'Agregar Nuevo Hotel';
+$pageTitle = $isEditing ? 'Editar cliente' : 'Agregar Nuevo cliente';
 
 if ($isEditing) {
     $hotel = $hotelController->obtenerHotel($_GET['edit']);
     if (!$hotel) {
-        header('Location: ' . BASE_URL . 'views/hoteles_list.php');
+        header('Location: ' . BASE_URL . 'views/ApiCliente.php');
         exit();
     }
 }
 
 // Procesar formulario
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $nombre = trim($_POST['nombre']);
-    $direccion = trim($_POST['direccion']);
-    $ubicacion = trim($_POST['ubicacion']);
+    $id = trim($_POST['id']);
+    $ruc = trim($_POST['ruc']);
+    $razon_social = trim($_POST['razon_social']);
     $telefono = trim($_POST['telefono']);
-    $email = trim($_POST['email']);
-    $servicios = isset($_POST['servicios']) ? implode(", ", $_POST['servicios']) : '';
-    $nuevos_servicios = trim($_POST['nuevos_servicios']);
+    $correo = trim($_POST['correo']);
+    $fecha_registro = isset($_POST['fecha_registro']);
+    $estado = trim($_POST['estado']);
     if (!empty($nuevos_servicios)) {
         $servicios .= ($servicios ? ", " : "") . $nuevos_servicios;
     }
-    $imagen = trim($_POST['imagen']);
-
+   
     // Validaciones
     $errores = [];
-    if (empty($nombre)) $errores[] = "El campo Nombre es obligatorio";
-    if (empty($direccion)) $errores[] = "El campo Dirección es obligatorio";
+    if (empty($id)) $errores[] = "El campo Id es obligatorio";
+    if (empty($ruc)) $errores[] = "El campo Ruc es obligatorio";
     if (empty($ubicacion)) {
         $errores[] = "El campo Ubicación es obligatorio";
     } elseif (strpos($ubicacion, 'https://maps.app.goo.gl/') !== 0) {
@@ -201,13 +200,13 @@ require_once __DIR__ . '/include/header.php';
 
     <form method="POST" action="">
         <div class="form-group">
-            <label for="nombre"><i class="fas fa-signature"></i> Nombre *</label>
-            <input type="text" id="nombre" name="nombre" value="<?php echo htmlspecialchars($hotel['nombre'] ?? ''); ?>" required>
+            <label for="nombre"><i class="fas fa-signature"></i> id *</label>
+            <input type="text" id="id" name="id" value="<?php echo htmlspecialchars($hotel['id'] ?? ''); ?>" required>
         </div>
 
         <div class="form-group">
-            <label for="direccion"><i class="fas fa-map-marker-alt"></i> Dirección *</label>
-            <input type="text" id="direccion" name="direccion" value="<?php echo htmlspecialchars($hotel['direccion'] ?? ''); ?>" required>
+            <label for="ruc"><i class="fas fa-map-marker-alt"></i> ruc *</label>
+            <input type="text" id="ruc" name="ruc" value="<?php echo htmlspecialchars($hotel['ruc'] ?? ''); ?>" required>
         </div>
 
         <div class="form-group">
