@@ -53,9 +53,9 @@ class ClientApiController
 
 
       // Agrega esto al final del archivo ClientApiController.php
-public function listarDocentesPorTokenYNombre($token, $nombre = null) {
+public function listarHotelesPorTokenYNombre($token, $nombre = null) {
     $docenteApiController = new DocenteApiController();
-    return $docenteApiController->listarDocentesPorTokenYNombre($token, $nombre);
+    return $docenteApiController->listarHotelesPorTokenYNombre($token, $nombre);
 }
 
     
