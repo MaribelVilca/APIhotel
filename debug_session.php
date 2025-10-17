@@ -81,12 +81,12 @@ echo "output_buffering: " . (ini_get('output_buffering') ? 'ON' : 'OFF') . "<br>
 echo "session.use_cookies: " . (ini_get('session.use_cookies') ? 'ON' : 'OFF') . "<br>";
 
 echo "<hr>";
-echo "<h3>🧪 Formulario de Prueba:</h3>";
+echo "<h3> Formulario de Prueba:</h3>";
 ?>
 
 <form method="POST" action="">
     <input type="hidden" name="test_login" value="1">
-    <button type="submit">🧪 Probar Login Directo</button>
+    <button type="submit">Probar Login Directo</button>
 </form>
 
 <?php

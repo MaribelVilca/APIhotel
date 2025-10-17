@@ -80,10 +80,14 @@ class TokenApi
         return $stmt->execute();
     }
 
-    // Generar un token aleatorio
-    public function generarToken()
+    // Generar un token aleatorio con formato específico
+    public function generarToken($id_client_api)
     {
-        return bin2hex(random_bytes(32));
+        $caracteresAleatorios = bin2hex(random_bytes(16)); // 16 caracteres
+        $fechaRegistro = date('Ymd'); // Formato: AAAAMMDD
+        $token = $caracteresAleatorios . '-' . $fechaRegistro . '-' . str_pad($id_client_api, 2, '0', STR_PAD_LEFT);
+        return $token;
     }
 }
 ?>
+

@@ -112,31 +112,31 @@ table tr:hover {
 
 </style>
 <div class="dashboard-container">
-    <h2><i class="fas fa-hotel"></i> ¡Bienvenido, <?php echo htmlspecialchars($_SESSION['nombre_completo'] ?? $_SESSION['username']); ?>!</h2>
+    <h2></i> ¡Bienvenido, <?php echo htmlspecialchars($_SESSION['nombre_completo'] ?? $_SESSION['username']); ?>!</h2>
     <p>Sistema de Gestión de Hoteles</p>
 
     <div class="card">
-        <h3><i class="fas fa-chart-line"></i> Estadísticas</h3>
+        <h3></i> Estadísticas</h3>
         <p>Total de hoteles registrados: <strong><?php echo $totalHoteles; ?></strong></p>
     </div>
 
     <div class="card">
         <h3><i class="fas fa-bolt"></i> Acciones Rápidas</h3>
         <div class="quick-actions">
-            <a href="<?php echo BASE_URL; ?>views/hoteles_list.php"><i class="fas fa-list"></i> Ver Todos los Hoteles</a>
-            <a href="<?php echo BASE_URL; ?>views/hotel_form.php"><i class="fas fa-plus-circle"></i> Agregar Nuevo Hotel</a>
-            <a href="<?= BASE_URL ?>views/usuarios_list.php"><i class="fas fa-users-cog"></i> Gestionar Usuarios</a>
+            <a href="<?php echo BASE_URL; ?>views/hoteles_list.php"></i> Ver Todos los Hoteles</a>
+            <a href="<?php echo BASE_URL; ?>views/hotel_form.php"></i> Agregar Nuevo Hotel</a>
+            <a href="<?= BASE_URL ?>views/usuarios_list.php"></i> Gestionar Usuarios</a>
             <a href="<?php echo BASE_URL; ?>views/clientes_list.php" class="btn btn-primary">
             <i class="fas fa-users"></i> Gestionar Clientes API
         </a>
         <a href="<?php echo BASE_URL; ?>views/tokens_list.php" class="btn btn-primary">
-            <i class="fas fa-key"></i> Gestionar Tokens API
+            </i> Gestionar Tokens API
         </a>
           </div>
     </div>
 
     <div class="card">
-        <h3><i class="fas fa-user-shield"></i> Información de la Sesión</h3>
+        <h3></i> Información de la Sesión</h3>
         <p><strong>ID:</strong> <?php echo $_SESSION['user_id']; ?></p>
         <p><strong>Usuario:</strong> <?php echo htmlspecialchars($_SESSION['username']); ?></p>
         <p><strong>Rol:</strong> <?php echo strtoupper($_SESSION['rol'] ?? 'ADMIN'); ?></p>
@@ -144,14 +144,14 @@ table tr:hover {
 
     <?php if (!empty($hotelesRecientes)): ?>
         <div class="card">
-            <h3><i class="fas fa-clock"></i> Hoteles Registrados Recientemente</h3>
+            <h3></i> Hoteles Registrados Recientemente</h3>
             <table>
                 <thead>
                     <tr>
-                        <th><i class="fas fa-hotel"></i> Nombre</th>
-                        <th><i class="fas fa-map-marker-alt"></i> Dirección</th>
-                        <th><i class="fas fa-phone"></i> Teléfono</th>
-                        <th><i class="fas fa-envelope"></i> Email</th>
+                        <th></i> Nombre</th>
+                        <th></i> Dirección</th>
+                        <th></i> Teléfono</th>
+                        <th></i> Email</th>
                      </tr>
                 </thead>
                 <tbody>

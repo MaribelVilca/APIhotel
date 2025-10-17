@@ -50,5 +50,14 @@ class ClientApiController
     {
         return $this->clientApiModel->eliminarCliente($id);
     }
+
+
+      // Agrega esto al final del archivo ClientApiController.php
+public function listarDocentesPorTokenYNombre($token, $nombre = null) {
+    $docenteApiController = new DocenteApiController();
+    return $docenteApiController->listarDocentesPorTokenYNombre($token, $nombre);
+}
+
+    
 }
 ?>

@@ -16,10 +16,6 @@ class ClientApi
     {
         return $this->conexion;
     }
-    private function generarToken()
-    {
-        return bin2hex(random_bytes(16)); // token
-    }
 
     // Obtener todos los clientes
     public function obtenerClientes()
@@ -69,8 +65,5 @@ class ClientApi
         $stmt->bind_param("i", $id);
         return $stmt->execute();
     }
-
 }
-
-
 ?>

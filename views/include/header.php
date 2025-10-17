@@ -55,7 +55,7 @@ if (session_status() === PHP_SESSION_NONE) {
     <header>
         <h1><i class="fas fa-hotel"></i> API Hoteles 2025</h1>
         <nav>
-            <a href="<?php echo BASE_URL; ?>views/dashboard.php"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
+            <a href="<?php echo BASE_URL; ?>views/dashboard.php"></i> Dashboard</a>
             <a href="<?php echo BASE_URL; ?>views/hoteles_list.php"><i class="fas fa-building"></i> Hoteles</a>
             <a href="#" onclick="logout(); return false;"><i class="fas fa-sign-out-alt"></i> Cerrar Sesión</a>
         </nav>
