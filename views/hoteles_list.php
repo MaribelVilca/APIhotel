@@ -219,14 +219,14 @@ require_once __DIR__ . '/include/header.php';
             <thead>
                 <tr>
                     <th>#</th>
-                    <th><i class="fas fa-hotel"></i> Nombre</th>
-                    <th><i class="fas fa-map-marker-alt"></i> Dirección</th>
-                    <th><i class="fas fa-map"></i> Ubicación</th>
-                    <th><i class="fas fa-phone"></i> Teléfono</th>
-                    <th><i class="fas fa-envelope"></i> Email</th>
-                    <th><i class="fas fa-concierge-bell"></i> Servicios</th>
-                    <th><i class="fas fa-image"></i> Imagen</th>
-                    <th><i class="fas fa-cogs"></i> Acciones</th>
+                    <th></i> Nombre</th>
+                    <th></i> Dirección</th>
+                    <th></i> Ubicación</th>
+                    <th></i> Teléfono</th>
+                    <th></i> Email</th>
+                    <th></i> Servicios</th>
+                    <th></i> Imagen</th>
+                    <th></i> Acciones</th>
                 </tr>
             </thead>
             <tbody>
@@ -239,7 +239,7 @@ require_once __DIR__ . '/include/header.php';
                         <td>
                             <?php if (!empty($hotel['ubicacion'])): ?>
                                 <a href="<?php echo htmlspecialchars($hotel['ubicacion']); ?>" target="_blank">
-                                    <i class="fas fa-map-pin"></i> Ver en mapa
+                                    </i> Ver en mapa
                                 </a>
                             <?php else: ?>
                                 Sin ubicación

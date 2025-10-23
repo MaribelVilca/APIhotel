@@ -294,7 +294,7 @@ require_once __DIR__ . '/include/header.php';
         <!-- Barra de búsqueda -->
         <div class="search-container">
             <form method="GET" action="">
-                <input type="text" name="search" class="search-box" placeholder="🔍 Buscar por nombre de cliente..." value="<?php echo htmlspecialchars($nombreBusqueda); ?>">
+                <input type="text" name="search" class="search-box" placeholder="Buscar por nombre de cliente..." value="<?php echo htmlspecialchars($nombreBusqueda); ?>">
             </form>
         </div>
 

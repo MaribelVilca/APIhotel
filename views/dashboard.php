@@ -132,6 +132,9 @@ table tr:hover {
         <a href="<?php echo BASE_URL; ?>views/tokens_list.php" class="btn btn-primary">
             </i> Gestionar Tokens API
         </a>
+        <a href="<?php echo BASE_URL; ?>views/api/Pruebas_api.php" class="btn btn-primary">
+            </i> Pruebas api
+        </a>
           </div>
     </div>
 
