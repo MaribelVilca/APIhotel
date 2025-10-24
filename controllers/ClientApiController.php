@@ -50,14 +50,5 @@ class ClientApiController
     {
         return $this->clientApiModel->eliminarCliente($id);
     }
-
-
-      // Agrega esto al final del archivo ClientApiController.php
-public function listarHotelesPorTokenYNombre($token, $nombre = null) {
-    $docenteApiController = new DocenteApiController();
-    return $docenteApiController->listarHotelesPorTokenYNombre($token, $nombre);
-}
-
-    
 }
 ?>

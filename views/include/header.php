@@ -53,11 +53,18 @@ if (session_status() === PHP_SESSION_NONE) {
 </head>
 <body>
     <header>
-        <h1></i> API Hoteles 2025</h1>
+        <h1><i class="fas fa-hotel"></i> API Hoteles 2025</h1>
         <nav>
             <a href="<?php echo BASE_URL; ?>views/dashboard.php"></i> Dashboard</a>
             <a href="<?php echo BASE_URL; ?>views/hoteles_list.php"></i> Hoteles</a>
-            <a href="#" onclick="logout(); return false;"></i> Cerrar Sesión</a>
+             <a href="<?php echo BASE_URL; ?>views/clientes_list.php" class="btn btn-primary">
+            Gestionar Clientes API
+        </a>
+        <a href="<?php echo BASE_URL; ?>views/tokens_list.php" class="btn btn-primary">
+            </i> Gestionar Tokens API
+        </a>
+            <a href="#" onclick="logout(); return false;"><i class="fas fa-sign-out-alt"></i> Cerrar Sesión</a>
+      
         </nav>
     </header>
 

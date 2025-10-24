@@ -30,10 +30,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $nombre = trim($_POST['nombre']);
     $direccion = trim($_POST['direccion']);
     $ubicacion = trim($_POST['ubicacion']);
+    $historia = trim($_POST['historia']);
     $telefono = trim($_POST['telefono']);
     $email = trim($_POST['email']);
+    $precio_promedio = isset($_POST['precio_promedio_custom']) ? trim($_POST['precio_promedio_custom']) : trim($_POST['precio_promedio_select']);
     $servicios = isset($_POST['servicios']) ? implode(", ", $_POST['servicios']) : '';
     $nuevos_servicios = trim($_POST['nuevos_servicios']);
+
     if (!empty($nuevos_servicios)) {
         $servicios .= ($servicios ? ", " : "") . $nuevos_servicios;
     }
@@ -48,6 +51,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     } elseif (strpos($ubicacion, 'https://maps.app.goo.gl/') !== 0) {
         $errores[] = "La ubicación debe ser un enlace válido de Google Maps";
     }
+    if (empty($historia)) $errores[] = "El campo Historia es obligatorio";
     if (!empty($email) && !filter_var($email, FILTER_VALIDATE_EMAIL)) {
         $errores[] = "El correo electrónico no es válido";
     }
@@ -57,21 +61,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $resultado = $hotelController->editarHotel(
                 $_GET['edit'],
                 $nombre, $direccion, $ubicacion,
-                "", $telefono, $email, "", $servicios, $imagen
+                $historia, $telefono, $email,
+                $precio_promedio, $servicios, $imagen
             );
-            $mensaje = $resultado ? "Hotel actualizado exitosamente" : " Error al actualizar el hotel";
+            $mensaje = $resultado ? "✅ Hotel actualizado exitosamente" : "❌ Error al actualizar el hotel";
             $tipo_mensaje = $resultado ? "success" : "error";
             $hotel = $hotelController->obtenerHotel($_GET['edit']);
         } else {
             $resultado = $hotelController->crearHotel(
                 $nombre, $direccion, $ubicacion,
-                "", $telefono, $email, "", $servicios, $imagen
+                $historia, $telefono, $email,
+                $precio_promedio, $servicios, $imagen
             );
             if ($resultado) {
                 header('Location: ' . BASE_URL . 'views/hoteles_list.php?created=1');
                 exit();
             } else {
-                $mensaje = "Error al crear el hotel";
+                $mensaje = "❌ Error al crear el hotel";
                 $tipo_mensaje = "error";
             }
         }
@@ -180,6 +186,7 @@ require_once __DIR__ . '/include/header.php';
         font-weight: normal;
     }
 </style>
+
 <div class="form-container">
     <h2><i class="fas fa-hotel"></i> <?php echo $pageTitle; ?></h2>
     <a href="<?php echo BASE_URL; ?>views/hoteles_list.php" class="btn btn-secondary"><i class="fas fa-arrow-left"></i> Volver</a>
@@ -216,6 +223,11 @@ require_once __DIR__ . '/include/header.php';
         </div>
 
         <div class="form-group">
+            <label for="historia"><i class="fas fa-book-open"></i> Historia *</label>
+            <textarea id="historia" name="historia" required><?php echo htmlspecialchars($hotel['historia'] ?? ''); ?></textarea>
+        </div>
+
+        <div class="form-group">
             <label for="telefono"><i class="fas fa-phone"></i> Teléfono</label>
             <input type="text" id="telefono" name="telefono" value="<?php echo htmlspecialchars($hotel['telefono'] ?? ''); ?>">
         </div>
@@ -223,6 +235,21 @@ require_once __DIR__ . '/include/header.php';
         <div class="form-group">
             <label for="email"><i class="fas fa-envelope"></i> Email</label>
             <input type="email" id="email" name="email" value="<?php echo htmlspecialchars($hotel['email'] ?? ''); ?>">
+        </div>
+
+        <div class="form-group">
+            <label for="precio_promedio"><i class="fas fa-dollar-sign"></i> Precio Promedio</label>
+            <select id="precio_promedio_select" name="precio_promedio_select" onchange="toggleCustomPrice()">
+                <option value="">Selecciona un rango</option>
+                <?php 
+                $rangos = ["30 - 80","40 - 100","80 - 150","150 - 250"];
+                foreach ($rangos as $r) {
+                    echo "<option value='$r' ".((isset($hotel['precio_promedio']) && $hotel['precio_promedio']===$r) ? "selected" : "").">$r</option>";
+                }
+                ?>
+                <option value="custom" <?php echo (!in_array($hotel['precio_promedio'] ?? '', $rangos) && !empty($hotel['precio_promedio'])) ? 'selected' : ''; ?>>Personalizado</option>
+            </select>
+            <input type="text" id="precio_promedio_custom" name="precio_promedio_custom" value="<?php echo (!in_array($hotel['precio_promedio'] ?? '', $rangos) && !empty($hotel['precio_promedio'])) ? htmlspecialchars($hotel['precio_promedio']) : ''; ?>" placeholder="Ej: 50 - 120" style="display: none; margin-top: 10px;">
         </div>
 
         <div class="form-group">
@@ -249,5 +276,21 @@ require_once __DIR__ . '/include/header.php';
         </div>
     </form>
 </div>
+
+<script>
+    function toggleCustomPrice() {
+        var select = document.getElementById('precio_promedio_select');
+        var customInput = document.getElementById('precio_promedio_custom');
+        if (select.value === 'custom') {
+            customInput.style.display = 'block';
+            customInput.required = true;
+        } else {
+            customInput.style.display = 'none';
+            customInput.required = false;
+            customInput.value = select.value;
+        }
+    }
+    window.onload = toggleCustomPrice;
+</script>
 
 <?php require_once __DIR__ . '/include/footer.php'; ?>

@@ -46,5 +46,24 @@ class HotelController {
         $resultado = $this->hotelModel->getConexion()->query("SELECT COUNT(*) as total FROM hoteles");
         return $resultado->fetch_assoc()['total'];
     }
+    public function buscarHoteles($search)
+{
+    $search = "%" . $this->getConexion()->real_escape_string($search) . "%";
+    $query = "
+        SELECT *
+        FROM hoteles
+        WHERE nombre LIKE ? OR servicios LIKE ?
+    ";
+    $stmt = $this->hotelModel->getConexion()->prepare($query);
+    $stmt->bind_param("ss", $search, $search);
+    $stmt->execute();
+    $resultado = $stmt->get_result();
+    $hoteles = [];
+    while ($fila = $resultado->fetch_assoc()) {
+        $hoteles[] = $fila;
+    }
+    return $hoteles;
+}
+
 }
 ?>

@@ -17,15 +17,9 @@ $hotelesRecientes = array_slice($hotelController->listarHoteles(), -5);
 
 require_once __DIR__ . '/include/header.php';
 ?>
-<style>
-    body {
-  font-family: "Segoe UI", Roboto, sans-serif;
-  background: #f4f6f8;
-  color: #333;
-  margin: 0;
-  padding: 20px;
-}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
+<style>
 h2 {
   font-size: 1.8rem;
   margin-bottom: 0.5rem;
@@ -56,7 +50,7 @@ p {
   color: #34495e;
 }
 
-.card i {
+.card h3 i {
   margin-right: 8px;
   color: #6c8ea4;
 }
@@ -85,6 +79,15 @@ p {
   background: #5a758a;
 }
 
+/* Quitar estilos adicionales de las clases btn y btn-primary */
+.quick-actions a.btn,
+.quick-actions a.btn-primary {
+  background: #6c8ea4 !important;
+  color: #fff !important;
+  padding: 0.7rem 1rem !important;
+  border-radius: 8px !important;
+}
+
 /* === TABLA === */
 table {
   width: 100%;
@@ -106,6 +109,11 @@ table th {
   color: #2c3e50;
 }
 
+table th i {
+  margin-right: 8px;
+  color: #6c8ea4;
+}
+
 table tr:hover {
   background: #f9fafb;
 }
@@ -121,22 +129,29 @@ table tr:hover {
     </div>
 
     <div class="card">
-        <h3><i class="fas fa-bolt"></i> Acciones Rápidas</h3>
-        <div class="quick-actions">
-            <a href="<?php echo BASE_URL; ?>views/hoteles_list.php"></i> Ver Todos los Hoteles</a>
-            <a href="<?php echo BASE_URL; ?>views/hotel_form.php"></i> Agregar Nuevo Hotel</a>
-            <a href="<?= BASE_URL ?>views/usuarios_list.php"></i> Gestionar Usuarios</a>
-            <a href="<?php echo BASE_URL; ?>views/clientes_list.php" class="btn btn-primary">
-            <i class="fas fa-users"></i> Gestionar Clientes API
+    <h3><i class="fas fa-bolt"></i> Acciones Rápidas</h3>
+    <div class="quick-actions">
+        <a href="<?php echo BASE_URL; ?>views/hoteles_list.php">
+           </i> Ver Todos los Hoteles
         </a>
-        <a href="<?php echo BASE_URL; ?>views/tokens_list.php" class="btn btn-primary">
+        <a href="<?php echo BASE_URL; ?>views/hotel_form.php">
+            </i> Agregar Nuevo Hotel
+        </a>
+        <a href="<?php echo BASE_URL; ?>views/usuarios_list.php">
+           </i> Gestionar Usuarios
+        </a>
+        <a href="<?php echo BASE_URL; ?>views/clientes_list.php">
+            </i> Gestionar Clientes API
+        </a>
+        <a href="<?php echo BASE_URL; ?>views/tokens_list.php">
             </i> Gestionar Tokens API
         </a>
-        <a href="<?php echo BASE_URL; ?>views/api/Pruebas_api.php" class="btn btn-primary">
-            </i> Pruebas api
+        <a href="<?php echo BASE_URL; ?>api_cliente/" target="_blank">
+            </i> Probar API Cliente
         </a>
-          </div>
     </div>
+</div>
+
 
     <div class="card">
         <h3></i> Información de la Sesión</h3>
@@ -155,7 +170,8 @@ table tr:hover {
                         <th></i> Dirección</th>
                         <th></i> Teléfono</th>
                         <th></i> Email</th>
-                     </tr>
+                        <th></i> Precio Promedio</th>
+                    </tr>
                 </thead>
                 <tbody>
                     <?php foreach (array_reverse($hotelesRecientes) as $hotel): ?>
@@ -164,7 +180,8 @@ table tr:hover {
                             <td><?php echo htmlspecialchars($hotel['direccion']); ?></td>
                             <td><?php echo htmlspecialchars($hotel['telefono']); ?></td>
                             <td><?php echo htmlspecialchars($hotel['email']); ?></td>
-                         </tr>
+                            <td><?php echo htmlspecialchars($hotel['precio_promedio']); ?></td>
+                        </tr>
                     <?php endforeach; ?>
                 </tbody>
             </table>

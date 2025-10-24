@@ -59,6 +59,7 @@ INSERT INTO `hoteles` (`id_hotel`, `nombre`, `direccion`, `ubicacion`, `historia
 (12, 'Polos', 'Av.jose olaya 215', 'https://maps.app.goo.gl/gYFvyd6R8xsDjuZTA', 'adfad', '272782', 'admin@gmail.com', '30', 'WiFi gratis', 'https://arcosac.com/wp-content/uploads/2022/10/TABMDF002001-AL-09-MDF-FIBROFACIL-MASISA-2-390x293.jpg', '2025-09-09 03:31:16'),
 (13, 'GRAN HOTEL IMPERIAL HUANTA', 'Av.jose olaya 215', 'https://maps.app.goo.gl/k7PDrGtgNby59VXT7', 'ac', '54325230', 'majid@gmail.com', '30.00', 'Desayuno, Estacionamiento, Restaurante, Piscina', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQWB4SXmGDDHYNPKoLOCbvTwB_E0ZVC7UbWYg&s', '2025-09-09 03:45:25');
 
+-- --------------------------------------------------------
 
 --
 -- Estructura de tabla para la tabla `usuarios`
@@ -115,36 +116,42 @@ ALTER TABLE `usuarios`
   MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-
-CREATE TABLE Client_API (
+-- Tabla de clientes que consumen la API
+CREATE TABLE client_api (
     id INT AUTO_INCREMENT PRIMARY KEY,
     ruc VARCHAR(20) NOT NULL,
     razon_social VARCHAR(150) NOT NULL,
     telefono VARCHAR(20),
     correo VARCHAR(100),
-    fecha_registro DATE,
-    estado TINYINT(1) DEFAULT 1
+    fecha_registro DATETIME DEFAULT CURRENT_TIMESTAMP,
+    estado TINYINT DEFAULT 1
 );
 
--- Tabla de tokens
-CREATE TABLE Tokens_api (
-    id INT(11) PRIMARY KEY,
-    id_client_api INT(11), 
-    token varchar(100), 
-    fecha_registro DATE,
-    estado int(1) DEFAULT 
+-- Tabla de tokens asociados a cada cliente
+CREATE TABLE tokens_api (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    id_client_api INT NOT NULL,
+    token VARCHAR(255) NOT NULL,
+    fecha_registro DATETIME DEFAULT CURRENT_TIMESTAMP,
+    estado TINYINT DEFAULT 1,
+    FOREIGN KEY (id_client_api) REFERENCES client_api(id)
 );
 
--- Tabla de conteo de requests
-CREATE TABLE Count_request (
-    id INT (11) PRIMARY KEY,
-    id_token_api INT(11),  
-    tipo VARCHAR(30),
-    fecha date
+-- Tabla para contar peticiones realizadas por token
+CREATE TABLE count_request (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    id_token INT NOT NULL,
+    tipo VARCHAR(50),
+    fecha DATE,
+    FOREIGN KEY (id_token) REFERENCES tokens_api(id)
 );
+
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
+
 /APIHOTEL
 │── /config
 │    └── database.php            # conexión a la base de datos

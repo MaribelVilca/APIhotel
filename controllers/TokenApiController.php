@@ -37,16 +37,17 @@ class TokenApiController
     }
 
     // Crear un nuevo token
-    public function crearToken($id_client_api)
-    {
-        $token = $this->tokenApiModel->generarToken($id_client_api);
-        return $this->tokenApiModel->guardarToken($id_client_api, $token);
-    }
+   public function crearToken($id_client_api)
+{
+    $token = $this->tokenApiModel->generarToken($id_client_api); // Pasar el $id_client_api
+    return $this->tokenApiModel->guardarToken($id_client_api, $token);
+}
 
-    // Cambiar estado de un token
-    public function cambiarEstadoToken($id, $nuevoEstado)
+
+    // Editar un token
+    public function editarToken($id, $estado)
     {
-        return $this->tokenApiModel->actualizarToken($id, $nuevoEstado);
+        return $this->tokenApiModel->actualizarToken($id, $estado);
     }
 
     // Eliminar un token
@@ -60,25 +61,19 @@ class TokenApiController
     {
         return $this->clientApiModel->obtenerClientes();
     }
+    public function obtenerTokenPorToken($token)
+{
+    $stmt = $this->tokenApiModel->getConexion()->prepare("
+        SELECT t.*, c.estado as cliente_estado
+        FROM tokens_api t
+        JOIN client_api c ON t.id_client_api = c.id
+        WHERE t.token = ? AND t.estado = 1 AND c.estado = 1
+    ");
+    $stmt->bind_param("s", $token);
+    $stmt->execute();
+    $resultado = $stmt->get_result();
+    return $resultado->fetch_assoc();
+}
 
-    // Buscar tokens por nombre de cliente
-    public function buscarTokensPorNombre($nombre)
-    {
-        $nombre = "%" . $nombre . "%";
-        $stmt = $this->tokenApiModel->getConexion()->prepare("
-            SELECT t.*, c.razon_social
-            FROM tokens_api t
-            JOIN client_api c ON t.id_client_api = c.id
-            WHERE c.razon_social LIKE ?
-        ");
-        $stmt->bind_param("s", $nombre);
-        $stmt->execute();
-        $resultado = $stmt->get_result();
-        $tokens = [];
-        while ($fila = $resultado->fetch_assoc()) {
-            $tokens[] = $fila;
-        }
-        return $tokens;
-    }
 }
 ?>

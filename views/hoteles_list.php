@@ -14,14 +14,15 @@ if (isset($_GET['delete']) && is_numeric($_GET['delete'])) {
     require_once __DIR__ . '/../controllers/HotelController.php';
     $hotelController = new HotelController();
     if ($hotelController->borrarHotel($_GET['delete'])) {
-        $mensaje = "Hotel eliminado exitosamente";
+        $mensaje = " Hotel eliminado exitosamente";
         $tipo_mensaje = "success";
     } else {
-        $mensaje = "Error al eliminar el hotel";
+        $mensaje = " Error al eliminar el hotel";
         $tipo_mensaje = "error";
     }
 }
 
+// Obtener lista de hoteles
 require_once __DIR__ . '/../controllers/HotelController.php';
 $hotelController = new HotelController();
 
@@ -32,10 +33,11 @@ $totalPaginas = ceil($totalHoteles / $hotelesPorPagina);
 $paginaActual = isset($_GET['pagina']) ? max(1, intval($_GET['pagina'])) : 1;
 $offset = ($paginaActual - 1) * $hotelesPorPagina;
 
-// Filtros
+// Filtros de búsqueda
 $filtroNombre = isset($_GET['nombre']) ? trim($_GET['nombre']) : '';
 $filtroServicio = isset($_GET['servicio']) ? trim($_GET['servicio']) : '';
 
+// Obtener todos los hoteles para aplicar los filtros
 $todosLosHoteles = $hotelController->listarHoteles();
 
 // Aplicar filtros
@@ -48,8 +50,11 @@ foreach ($todosLosHoteles as $hotel) {
     }
 }
 
+// Calcular paginación para los hoteles filtrados
 $totalHotelesFiltrados = count($hotelesFiltrados);
 $totalPaginasFiltradas = ceil($totalHotelesFiltrados / $hotelesPorPagina);
+
+// Obtener los hoteles de la página actual después de aplicar los filtros
 $hotelesPaginados = array_slice($hotelesFiltrados, $offset, $hotelesPorPagina);
 
 require_once __DIR__ . '/include/header.php';
@@ -179,6 +184,7 @@ require_once __DIR__ . '/include/header.php';
         color: #fff;
     }
 </style>
+
 <div class="contenedor">
     <?php if (isset($mensaje)): ?>
         <div class="mensaje <?= $tipo_mensaje; ?>">
@@ -192,7 +198,7 @@ require_once __DIR__ . '/include/header.php';
         <a href="<?php echo BASE_URL; ?>views/hotel_form.php"><i class="fas fa-plus-circle"></i> Agregar Nuevo Hotel</a>
     </div>
 
-    <!-- Filtros -->
+    <!-- Filtros de búsqueda -->
     <form method="GET" action="<?php echo BASE_URL; ?>views/hoteles_list.php" class="filtros">
         <input type="hidden" name="pagina" value="1">
         <div>
@@ -222,8 +228,10 @@ require_once __DIR__ . '/include/header.php';
                     <th></i> Nombre</th>
                     <th></i> Dirección</th>
                     <th></i> Ubicación</th>
+                    <th></i> Historia</th>
                     <th></i> Teléfono</th>
                     <th></i> Email</th>
+                    <th></i> Precio Promedio</th>
                     <th></i> Servicios</th>
                     <th></i> Imagen</th>
                     <th></i> Acciones</th>
@@ -245,8 +253,10 @@ require_once __DIR__ . '/include/header.php';
                                 Sin ubicación
                             <?php endif; ?>
                         </td>
+                        <td><?php echo htmlspecialchars(substr($hotel['historia'], 0, 50)) . (strlen($hotel['historia']) > 50 ? '...' : ''); ?></td>
                         <td><?php echo htmlspecialchars($hotel['telefono']); ?></td>
                         <td><?php echo htmlspecialchars($hotel['email']); ?></td>
+                        <td><?php echo htmlspecialchars($hotel['precio_promedio']); ?></td>
                         <td><?php echo htmlspecialchars($hotel['servicios']); ?></td>
                         <td>
                             <?php if (!empty($hotel['imagen'])): ?>
@@ -284,7 +294,7 @@ require_once __DIR__ . '/include/header.php';
 
             <?php if ($paginaActual < $totalPaginasFiltradas): ?>
                 <a href="<?php echo BASE_URL; ?>views/hoteles_list.php?pagina=<?php echo $paginaActual + 1; ?><?php echo (!empty($filtroNombre) || !empty($filtroServicio)) ? '&nombre=' . urlencode($filtroNombre) . '&servicio=' . urlencode($filtroServicio) : ''; ?>">
-                    Siguiente <i class="fas fa-arrow-right"></i>
+                    Siguiente</i>
                 </a>
             <?php endif; ?>
         </div>

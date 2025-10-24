@@ -129,13 +129,13 @@ if (isset($_SESSION['user_id'])) {
     <!-- Mensajes -->
     <?php if (isset($_GET['logout']) && $_GET['logout'] == 1): ?>
       <div class="alert alert-success">
-        Sesión cerrada exitosamente
+        ✅ Sesión cerrada exitosamente
       </div>
     <?php endif; ?>
 
     <?php if (isset($_GET['error']) && $_GET['error'] == 1): ?>
       <div class="alert alert-error">
-         Usuario o contraseña incorrectos
+        ❌ Usuario o contraseña incorrectos
       </div>
     <?php endif; ?>
 
