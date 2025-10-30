@@ -188,7 +188,7 @@ require_once __DIR__ . '/include/header.php';
 </style>
 
 <div class="form-container">
-    <h2><i class="fas fa-hotel"></i> <?php echo $pageTitle; ?></h2>
+    <h2></i> <?php echo $pageTitle; ?></h2>
     <a href="<?php echo BASE_URL; ?>views/hoteles_list.php" class="btn btn-secondary"><i class="fas fa-arrow-left"></i> Volver</a>
 
     <?php if (isset($mensaje)): ?>
@@ -208,37 +208,37 @@ require_once __DIR__ . '/include/header.php';
 
     <form method="POST" action="">
         <div class="form-group">
-            <label for="nombre"><i class="fas fa-signature"></i> Nombre *</label>
+            <label for="nombre"></i> Nombre *</label>
             <input type="text" id="nombre" name="nombre" value="<?php echo htmlspecialchars($hotel['nombre'] ?? ''); ?>" required>
         </div>
 
         <div class="form-group">
-            <label for="direccion"><i class="fas fa-map-marker-alt"></i> Dirección *</label>
+            <label for="direccion"></i> Dirección *</label>
             <input type="text" id="direccion" name="direccion" value="<?php echo htmlspecialchars($hotel['direccion'] ?? ''); ?>" required>
         </div>
 
         <div class="form-group">
-            <label for="ubicacion"><i class="fas fa-map"></i> Google Maps *</label>
+            <label for="ubicacion"></i> Google Maps *</label>
             <input type="text" id="ubicacion" name="ubicacion" value="<?php echo htmlspecialchars($hotel['ubicacion'] ?? ''); ?>" required placeholder="https://maps.app.goo.gl/...">
         </div>
 
         <div class="form-group">
-            <label for="historia"><i class="fas fa-book-open"></i> Historia *</label>
+            <label for="historia"></i> Historia *</label>
             <textarea id="historia" name="historia" required><?php echo htmlspecialchars($hotel['historia'] ?? ''); ?></textarea>
         </div>
 
         <div class="form-group">
-            <label for="telefono"><i class="fas fa-phone"></i> Teléfono</label>
+            <label for="telefono"></i> Teléfono</label>
             <input type="text" id="telefono" name="telefono" value="<?php echo htmlspecialchars($hotel['telefono'] ?? ''); ?>">
         </div>
 
         <div class="form-group">
-            <label for="email"><i class="fas fa-envelope"></i> Email</label>
+            <label for="email"></i> Email</label>
             <input type="email" id="email" name="email" value="<?php echo htmlspecialchars($hotel['email'] ?? ''); ?>">
         </div>
 
         <div class="form-group">
-            <label for="precio_promedio"><i class="fas fa-dollar-sign"></i> Precio Promedio</label>
+            <label for="precio_promedio"></i> Precio Promedio</label>
             <select id="precio_promedio_select" name="precio_promedio_select" onchange="toggleCustomPrice()">
                 <option value="">Selecciona un rango</option>
                 <?php 
@@ -253,7 +253,7 @@ require_once __DIR__ . '/include/header.php';
         </div>
 
         <div class="form-group">
-            <label><i class="fas fa-concierge-bell"></i> Servicios</label>
+            <label></i> Servicios</label>
             <div class="checkbox-group">
                 <?php foreach ($serviciosComunes as $servicio): ?>
                     <div>
@@ -266,12 +266,12 @@ require_once __DIR__ . '/include/header.php';
         </div>
 
         <div class="form-group">
-            <label for="imagen"><i class="fas fa-image"></i> URL de la Imagen</label>
+            <label for="imagen"></i> URL de la Imagen</label>
             <input type="text" id="imagen" name="imagen" value="<?php echo htmlspecialchars($hotel['imagen'] ?? ''); ?>">
         </div>
 
         <div class="form-actions">
-            <a href="<?php echo BASE_URL; ?>views/hoteles_list.php" class="btn btn-secondary"><i class="fas fa-times"></i> Cancelar</a>
+            <a href="<?php echo BASE_URL; ?>views/hoteles_list.php" class="btn btn-secondary"></i> Cancelar</a>
             <button type="submit" class="btn btn-primary"><i class="fas fa-save"></i> <?php echo $isEditing ? 'Actualizar Hotel' : 'Crear Hotel'; ?></button>
         </div>
     </form>

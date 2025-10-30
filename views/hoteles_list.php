@@ -270,7 +270,7 @@ require_once __DIR__ . '/include/header.php';
                                 <i class="fas fa-edit"></i> Editar
                             </a>
                             <a href="#" class="eliminar" onclick="confirmarEliminacion(<?php echo $hotel['id_hotel']; ?>, '<?php echo addslashes($hotel['nombre']); ?>', <?php echo $paginaActual; ?>, '<?php echo urlencode($filtroNombre); ?>', '<?php echo urlencode($filtroServicio); ?>')">
-                                <i class="fas fa-trash-alt"></i> Eliminar
+                                </i> Eliminar
                             </a>
                         </td>
                     </tr>
@@ -282,7 +282,7 @@ require_once __DIR__ . '/include/header.php';
         <div class="paginacion">
             <?php if ($paginaActual > 1): ?>
                 <a href="<?php echo BASE_URL; ?>views/hoteles_list.php?pagina=<?php echo $paginaActual - 1; ?><?php echo (!empty($filtroNombre) || !empty($filtroServicio)) ? '&nombre=' . urlencode($filtroNombre) . '&servicio=' . urlencode($filtroServicio) : ''; ?>">
-                    <i class="fas fa-arrow-left"></i> Anterior
+                    </i> Anterior
                 </a>
             <?php endif; ?>
 
