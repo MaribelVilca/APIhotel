@@ -13,10 +13,10 @@ if (isset($_GET['delete']) && is_numeric($_GET['delete'])) {
     require_once __DIR__ . '/../controllers/TokenApiController.php';
     $tokenApiController = new TokenApiController();
     if ($tokenApiController->borrarToken($_GET['delete'])) {
-        $mensaje = "Token eliminado exitosamente";
+        $mensaje = "✅ Token eliminado exitosamente";
         $tipo_mensaje = "success";
     } else {
-        $mensaje = "Error al eliminar el token";
+        $mensaje = "❌ Error al eliminar el token";
         $tipo_mensaje = "error";
     }
 }
@@ -185,9 +185,9 @@ require_once __DIR__ . '/include/header.php';
 
     <div class="card">
         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
-            <h3></i> Gestión de Tokens API</h3>
+            <h3><i class="fas fa-key"></i> Gestión de Tokens API</h3>
             <a href="<?php echo BASE_URL; ?>views/token_form.php" class="btn-success" style="padding: 0.5rem 1rem; border-radius: 6px;">
-               </i> Generar Nuevo Token
+                <i class="fas fa-plus"></i> Generar Nuevo Token
             </a>
         </div>
 
@@ -197,7 +197,7 @@ require_once __DIR__ . '/include/header.php';
                 <h3>No hay tokens registrados</h3>
                 <p>Comienza generando tu primer token.</p>
                 <a href="<?php echo BASE_URL; ?>views/token_form.php" class="btn-success" style="margin-top: 1rem; padding: 0.5rem 1rem; border-radius: 6px;">
-                    </i> Generar Primer Token
+                    <i class="fas fa-plus"></i> Generar Primer Token
                 </a>
             </div>
         <?php else: ?>

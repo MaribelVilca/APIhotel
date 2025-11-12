@@ -129,32 +129,30 @@ table tr:hover {
     </div>
 
     <div class="card">
-    <h3><i class="fas fa-bolt"></i> Acciones Rápidas</h3>
+    <h3></i> Acciones Rápidas</h3>
     <div class="quick-actions">
         <a href="<?php echo BASE_URL; ?>views/hoteles_list.php">
-           </i> Ver Todos los Hoteles
+            </i> Ver Todos los Hoteles
         </a>
         <a href="<?php echo BASE_URL; ?>views/hotel_form.php">
             </i> Agregar Nuevo Hotel
         </a>
         <a href="<?php echo BASE_URL; ?>views/usuarios_list.php">
-           </i> Gestionar Usuarios
+            </i> Gestionar Usuarios
         </a>
         <a href="<?php echo BASE_URL; ?>views/clientes_list.php">
-            </i> Gestionar Clientes API
+        </i> Gestionar Clientes API
         </a>
         <a href="<?php echo BASE_URL; ?>views/tokens_list.php">
             </i> Gestionar Tokens API
         </a>
-        <a href="<?php echo BASE_URL; ?>api_cliente/" target="_blank">
-            </i> Probar API Cliente
-        </a>
+        
     </div>
 </div>
 
 
     <div class="card">
-        <h3></i> Información de la Sesión</h3>
+        <h3><i class="fas fa-user-shield"></i> Información de la Sesión</h3>
         <p><strong>ID:</strong> <?php echo $_SESSION['user_id']; ?></p>
         <p><strong>Usuario:</strong> <?php echo htmlspecialchars($_SESSION['username']); ?></p>
         <p><strong>Rol:</strong> <?php echo strtoupper($_SESSION['rol'] ?? 'ADMIN'); ?></p>
@@ -162,15 +160,15 @@ table tr:hover {
 
     <?php if (!empty($hotelesRecientes)): ?>
         <div class="card">
-            <h3></i> Hoteles Registrados Recientemente</h3>
+            <h3><i class="fas fa-clock"></i> Hoteles Registrados Recientemente</h3>
             <table>
                 <thead>
                     <tr>
-                        <th></i> Nombre</th>
-                        <th></i> Dirección</th>
-                        <th></i> Teléfono</th>
-                        <th></i> Email</th>
-                        <th></i> Precio Promedio</th>
+                        <th><i class="fas fa-hotel"></i> Nombre</th>
+                        <th><i class="fas fa-map-marker-alt"></i> Dirección</th>
+                        <th><i class="fas fa-phone"></i> Teléfono</th>
+                        <th><i class="fas fa-envelope"></i> Email</th>
+                        <th><i class="fas fa-dollar-sign"></i> Precio Promedio</th>
                     </tr>
                 </thead>
                 <tbody>

@@ -77,7 +77,7 @@ require_once __DIR__ . '/include/header.php';
         background: #f4f6f8;
         color: #333;
         margin: 0;
-        padding: 20px;
+       
     }
 
     .dashboard-container {
@@ -224,7 +224,7 @@ require_once __DIR__ . '/include/header.php';
 
     <?php if (!empty($errores)): ?>
         <div class="mensaje error">
-            <strong> Se encontraron los siguientes errores:</strong>
+            <strong>Se encontraron los siguientes errores:</strong>
             <ul style="margin-top: 0.5rem; padding-left: 1.5rem;">
                 <?php foreach ($errores as $error): ?>
                     <li><?php echo htmlspecialchars($error); ?></li>
@@ -270,7 +270,7 @@ require_once __DIR__ . '/include/header.php';
                 </div>
                 <div class="quick-actions">
                     <a href="<?php echo BASE_URL; ?>views/clientes_list.php" class="btn-cancel">
-                         Cancelar
+                        Cancelar
                     </a>
                     <?php if ($isEditing): ?>
                         <button type="submit" class="btn-warning">
@@ -278,7 +278,7 @@ require_once __DIR__ . '/include/header.php';
                         </button>
                     <?php else: ?>
                         <button type="submit" class="btn-success">
-                           </i> Crear Cliente
+                            </i> Crear Cliente
                         </button>
                     <?php endif; ?>
                 </div>

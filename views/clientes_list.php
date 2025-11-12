@@ -179,9 +179,9 @@ require_once __DIR__ . '/include/header.php';
 
     <div class="card">
         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
-            <h3></i> Gestión de Clientes API</h3>
+            <h3><i class="fas fa-users"></i> Gestión de Clientes API</h3>
             <a href="<?php echo BASE_URL; ?>views/cliente_form.php" class="btn-success" style="padding: 0.5rem 1rem; border-radius: 6px;">
-                </i> Agregar Nuevo Cliente
+                <i class="fas fa-plus"></i> Agregar Nuevo Cliente
             </a>
         </div>
 
@@ -191,7 +191,7 @@ require_once __DIR__ . '/include/header.php';
                 <h3>No hay clientes registrados</h3>
                 <p>Comienza agregando tu primer cliente al sistema.</p>
                 <a href="<?php echo BASE_URL; ?>views/cliente_form.php" class="btn-success" style="margin-top: 1rem; padding: 0.5rem 1rem; border-radius: 6px;">
-                   </i> Agregar Primer Cliente
+                    <i class="fas fa-plus"></i> Agregar Primer Cliente
                 </a>
             </div>
         <?php else: ?>

@@ -14,10 +14,10 @@ if (isset($_GET['delete']) && is_numeric($_GET['delete'])) {
     require_once __DIR__ . '/../controllers/HotelController.php';
     $hotelController = new HotelController();
     if ($hotelController->borrarHotel($_GET['delete'])) {
-        $mensaje = " Hotel eliminado exitosamente";
+        $mensaje = "✅ Hotel eliminado exitosamente";
         $tipo_mensaje = "success";
     } else {
-        $mensaje = " Error al eliminar el hotel";
+        $mensaje = "❌ Error al eliminar el hotel";
         $tipo_mensaje = "error";
     }
 }
@@ -225,16 +225,16 @@ require_once __DIR__ . '/include/header.php';
             <thead>
                 <tr>
                     <th>#</th>
-                    <th></i> Nombre</th>
-                    <th></i> Dirección</th>
-                    <th></i> Ubicación</th>
-                    <th></i> Historia</th>
-                    <th></i> Teléfono</th>
-                    <th></i> Email</th>
-                    <th></i> Precio Promedio</th>
-                    <th></i> Servicios</th>
-                    <th></i> Imagen</th>
-                    <th></i> Acciones</th>
+                    <th><i class="fas fa-hotel"></i> Nombre</th>
+                    <th><i class="fas fa-map-marker-alt"></i> Dirección</th>
+                    <th><i class="fas fa-map"></i> Ubicación</th>
+                    <th><i class="fas fa-book"></i> Historia</th>
+                    <th><i class="fas fa-phone"></i> Teléfono</th>
+                    <th><i class="fas fa-envelope"></i> Email</th>
+                    <th><i class="fas fa-dollar-sign"></i> Precio Promedio</th>
+                    <th><i class="fas fa-concierge-bell"></i> Servicios</th>
+                    <th><i class="fas fa-image"></i> Imagen</th>
+                    <th><i class="fas fa-cogs"></i> Acciones</th>
                 </tr>
             </thead>
             <tbody>
@@ -247,7 +247,7 @@ require_once __DIR__ . '/include/header.php';
                         <td>
                             <?php if (!empty($hotel['ubicacion'])): ?>
                                 <a href="<?php echo htmlspecialchars($hotel['ubicacion']); ?>" target="_blank">
-                                    </i> Ver en mapa
+                                    <i class="fas fa-map-pin"></i> Ver en mapa
                                 </a>
                             <?php else: ?>
                                 Sin ubicación
@@ -270,7 +270,7 @@ require_once __DIR__ . '/include/header.php';
                                 <i class="fas fa-edit"></i> Editar
                             </a>
                             <a href="#" class="eliminar" onclick="confirmarEliminacion(<?php echo $hotel['id_hotel']; ?>, '<?php echo addslashes($hotel['nombre']); ?>', <?php echo $paginaActual; ?>, '<?php echo urlencode($filtroNombre); ?>', '<?php echo urlencode($filtroServicio); ?>')">
-                                </i> Eliminar
+                                <i class="fas fa-trash-alt"></i> Eliminar
                             </a>
                         </td>
                     </tr>
@@ -282,7 +282,7 @@ require_once __DIR__ . '/include/header.php';
         <div class="paginacion">
             <?php if ($paginaActual > 1): ?>
                 <a href="<?php echo BASE_URL; ?>views/hoteles_list.php?pagina=<?php echo $paginaActual - 1; ?><?php echo (!empty($filtroNombre) || !empty($filtroServicio)) ? '&nombre=' . urlencode($filtroNombre) . '&servicio=' . urlencode($filtroServicio) : ''; ?>">
-                    </i> Anterior
+                    <i class="fas fa-arrow-left"></i> Anterior
                 </a>
             <?php endif; ?>
 
@@ -294,7 +294,7 @@ require_once __DIR__ . '/include/header.php';
 
             <?php if ($paginaActual < $totalPaginasFiltradas): ?>
                 <a href="<?php echo BASE_URL; ?>views/hoteles_list.php?pagina=<?php echo $paginaActual + 1; ?><?php echo (!empty($filtroNombre) || !empty($filtroServicio)) ? '&nombre=' . urlencode($filtroNombre) . '&servicio=' . urlencode($filtroServicio) : ''; ?>">
-                    Siguiente</i>
+                    Siguiente <i class="fas fa-arrow-right"></i>
                 </a>
             <?php endif; ?>
         </div>
