@@ -59,7 +59,7 @@ INSERT INTO `hoteles` (`id_hotel`, `nombre`, `direccion`, `ubicacion`, `historia
 (12, 'Polos', 'Av.jose olaya 215', 'https://maps.app.goo.gl/gYFvyd6R8xsDjuZTA', 'adfad', '272782', 'admin@gmail.com', '30', 'WiFi gratis', 'https://arcosac.com/wp-content/uploads/2022/10/TABMDF002001-AL-09-MDF-FIBROFACIL-MASISA-2-390x293.jpg', '2025-09-09 03:31:16'),
 (13, 'GRAN HOTEL IMPERIAL HUANTA', 'Av.jose olaya 215', 'https://maps.app.goo.gl/k7PDrGtgNby59VXT7', 'ac', '54325230', 'majid@gmail.com', '30.00', 'Desayuno, Estacionamiento, Restaurante, Piscina', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQWB4SXmGDDHYNPKoLOCbvTwB_E0ZVC7UbWYg&s', '2025-09-09 03:45:25');
 
--- --------------------------------------------------------
+-- --------------------------------------------
 
 --
 -- Estructura de tabla para la tabla `usuarios`
@@ -181,4 +181,4 @@ CREATE TABLE count_request (
 └── index.php                    # redirige a /public/index.php
 └── .htaccess                    # urls amigables
 
--- ================================
+

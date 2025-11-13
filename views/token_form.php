@@ -41,11 +41,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if ($isEditing) {
             $resultado = $tokenApiController->editarToken($_GET['edit'], $estado);
             if ($resultado) {
-                $mensaje = "✅ Token actualizado exitosamente";
+                $mensaje = "Token actualizado exitosamente";
                 $tipo_mensaje = "success";
                 $token = $tokenApiController->obtenerToken($_GET['edit']);
             } else {
-                $mensaje = "❌ Error al actualizar el token";
+                $mensaje = "Error al actualizar el token";
                 $tipo_mensaje = "error";
             }
         } else {
@@ -54,7 +54,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 header('Location: ' . BASE_URL . 'views/tokens_list.php?created=1');
                 exit();
             } else {
-                $mensaje = "❌ Error al generar el token";
+                $mensaje = "Error al generar el token";
                 $tipo_mensaje = "error";
             }
         }
@@ -211,9 +211,9 @@ require_once __DIR__ . '/include/header.php';
 <div class="dashboard-container">
     <!-- Breadcrumb -->
     <div style="margin-bottom: 1rem; color: #6c8ea4;">
-        <a href="<?php echo BASE_URL; ?>views/dashboard.php" style="color: #6c8ea4; text-decoration: none;">🏠 Dashboard</a>
+        <a href="<?php echo BASE_URL; ?>views/dashboard.php" style="color: #6c8ea4; text-decoration: none;"> Dashboard</a>
         <span> > </span>
-        <a href="<?php echo BASE_URL; ?>views/tokens_list.php" style="color: #6c8ea4; text-decoration: none;">🔑 Tokens</a>
+        <a href="<?php echo BASE_URL; ?>views/tokens_list.php" style="color: #6c8ea4; text-decoration: none;">Tokens</a>
         <span> > </span>
         <span><?php echo $isEditing ? 'Editar' : 'Nuevo'; ?></span>
     </div>
@@ -228,7 +228,7 @@ require_once __DIR__ . '/include/header.php';
 
     <?php if (!empty($errores)): ?>
         <div class="mensaje error">
-            <strong>❌ Se encontraron los siguientes errores:</strong>
+            <strong>Se encontraron los siguientes errores:</strong>
             <ul style="margin-top: 0.5rem; padding-left: 1.5rem;">
                 <?php foreach ($errores as $error): ?>
                     <li><?php echo htmlspecialchars($error); ?></li>
@@ -238,7 +238,7 @@ require_once __DIR__ . '/include/header.php';
     <?php endif; ?>
 
     <div class="card">
-        <h3><i class="fas fa-key"></i> <?php echo $pageTitle; ?></h3>
+        <h3></i> <?php echo $pageTitle; ?></h3>
         <form method="POST" action="">
             <div class="form-group">
                 <label for="id_client_api">Cliente *</label>
@@ -273,15 +273,15 @@ require_once __DIR__ . '/include/header.php';
                 </div>
                 <div class="quick-actions">
                     <a href="<?php echo BASE_URL; ?>views/tokens_list.php" class="btn-cancel">
-                        ❌ Cancelar
+                         Cancelar
                     </a>
                     <?php if ($isEditing): ?>
                         <button type="submit" class="btn-warning">
-                            <i class="fas fa-save"></i> Actualizar Token
+                            </i> Actualizar Token
                         </button>
                     <?php else: ?>
                         <button type="submit" class="btn-success">
-                            <i class="fas fa-plus-circle"></i> Generar Token
+                            </i> Generar Token
                         </button>
                     <?php endif; ?>
                 </div>
