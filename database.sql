@@ -151,34 +151,3 @@ CREATE TABLE count_request (
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 
-
-/APIHOTEL
-│── /config
-│    └── database.php            # conexión a la base de datos
-│
-│── /controllers
-│    └── AuthController.php      # login (ya lo tienes)
-│    └── HotelController.php     # CRUD + búsqueda de hoteles
-│
-│── /models
-│    └── Usuario.php             # modelo usuarios
-│    └── Hotel.php               # modelo hoteles
-│
-│── /views
-│    ├── include/
-│    │     ├── header.php
-│    │     └── footer.php
-│    ├── login.php               # vista login
-│    ├── dashboard.php           # panel de admin
-│    ├── hoteles_list.php        # listar hoteles
-│    └── hotel_form.php          # formulario crear/editar hoteles
-│
-│── /public
-│    ├── index.php               # enrutador frontal (endpoints API REST)
-│    ├── css/
-│    └── js/
-│
-└── index.php                    # redirige a /public/index.php
-└── .htaccess                    # urls amigables
-
--- ================================
