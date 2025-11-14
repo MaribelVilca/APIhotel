@@ -120,31 +120,31 @@ table tr:hover {
 
 </style>
 <div class="dashboard-container">
-    <h2></i> ¡Bienvenido, <?php echo htmlspecialchars($_SESSION['nombre_completo'] ?? $_SESSION['username']); ?>!</h2>
+    <h2><i class="fas fa-hotel"></i> ¡Bienvenido, <?php echo htmlspecialchars($_SESSION['nombre_completo'] ?? $_SESSION['username']); ?>!</h2>
     <p>Sistema de Gestión de Hoteles</p>
 
     <div class="card">
-        <h3></i> Estadísticas</h3>
+        <h3><i class="fas fa-chart-line"></i> Estadísticas</h3>
         <p>Total de hoteles registrados: <strong><?php echo $totalHoteles; ?></strong></p>
     </div>
 
     <div class="card">
-    <h3></i> Acciones Rápidas</h3>
+    <h3><i class="fas fa-bolt"></i> Acciones Rápidas</h3>
     <div class="quick-actions">
         <a href="<?php echo BASE_URL; ?>views/hoteles_list.php">
-            </i> Ver Todos los Hoteles
+            <i class="fas fa-list"></i> Ver Todos los Hoteles
         </a>
         <a href="<?php echo BASE_URL; ?>views/hotel_form.php">
-            </i> Agregar Nuevo Hotel
+            <i class="fas fa-plus-circle"></i> Agregar Nuevo Hotel
         </a>
         <a href="<?php echo BASE_URL; ?>views/usuarios_list.php">
-            </i> Gestionar Usuarios
+            <i class="fas fa-users-cog"></i> Gestionar Usuarios
         </a>
         <a href="<?php echo BASE_URL; ?>views/clientes_list.php">
-        </i> Gestionar Clientes API
+            <i class="fas fa-users"></i> Gestionar Clientes API
         </a>
         <a href="<?php echo BASE_URL; ?>views/tokens_list.php">
-            </i> Gestionar Tokens API
+            <i class="fas fa-key"></i> Gestionar Tokens API
         </a>
         
     </div>
